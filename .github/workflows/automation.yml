@@ -16,11 +16,11 @@ jobs:
         with:
           name: site-build
           path: .next/
-    release-project:
-      name: Distribute Next.js project to GitHub Releases
-      runs-on: ubuntu-latest
-      steps:
-        - name: Download site content
-          uses: actions/download-artifact@v2
-          with:
-            name: site-build
+  release-project:
+    name: Distribute Next.js project to GitHub Releases
+    runs-on: ubuntu-latest
+    steps:
+      - name: Download site content
+        uses: actions/download-artifact@v2
+        with:
+          name: site-build
