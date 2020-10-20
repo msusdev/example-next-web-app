@@ -1,0 +1,43 @@
+{
+    "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
+    "contentVersion": "1.0.0.0",
+    "resources": [
+        {
+            "type": "Microsoft.ContainerInstance/containerGroups",
+            "apiVersion": "2019-12-01",
+            "name": "[concat('smoketest', uniqueString(resourceGroup().id))]",
+            "location": "[resourceGroup().location]",
+            "properties": {
+                "containers": [
+                    {
+                        "name": "smoketest",
+                        "properties": {
+                            "image": "msusdev/webnext",
+                            "resources": {
+                                "requests": {
+                                    "cpu": 1.0,
+                                    "memoryInGB": 1.5
+                                }
+                            },
+                            "ports": [
+                                {
+                                    "port": 3000
+                                }
+                            ]
+                        }
+                    }
+                ],
+                "osType": "Linux",
+                "ipAddress": {
+                    "type": "Public",
+                    "dnsNameLabel": "[concat('smoketestweb', uniqueString(resourceGroup().id))]",
+                    "ports": [
+                        {
+                            "port": 3000
+                        }
+                    ]
+                }
+            }
+        }
+    ]
+}
