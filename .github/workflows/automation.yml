@@ -91,3 +91,24 @@ jobs:
         with:
           app-name: ${{ env.WEB_APP_NAME }}
           images: msusdev/webnext:latest
+  deploy-azure-manual:
+    name: Deploy code directly to Azure
+    runs-on: ubuntu-latest
+    needs: build-project
+    env:
+      WEB_APP_NAME: sidneywebinarcode
+    steps:
+      - name: Download site content
+        uses: actions/download-artifact@v2
+        with:
+          name: site-build
+      - name: Login to Azure
+        uses: azure/login@v1
+        with:
+          creds: ${{ secrets.AZURE_CREDENTIALS }}
+      - name: Deploy Web App code
+        uses: azure/webapps-deploy@v2
+        with:
+          app-name: ${{ env.WEB_APP_NAME }}
+          package: .
+      
