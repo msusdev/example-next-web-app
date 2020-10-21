@@ -22,7 +22,7 @@ const Index = ({ locationGroups }) =>
 
 const getLocation = (location) =>
     <>
-        <img src={'/img/' + location.image} class="card-img-top" alt="{location.name}" /> 
+        <img src={'/img/' + location.image} className="card-img-top" alt="{location.name}" /> 
         <div className="card-body">
             <h5 className="card-title text-center">
                 {location.name}
@@ -43,7 +43,7 @@ const getLocation = (location) =>
         </div>
     </>;  
 
-export const getServerSideProps = async (context) =>
+export const getStaticProps = async (context) =>
 {
     var items = [...Locations];
     return {

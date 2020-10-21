@@ -44,7 +44,7 @@ const getTable = (location) =>
         </thead>
         <tbody>            
             {location.rooms.map((room) => (
-                <tr>
+                <tr key="{room.description}">
                     <th scope="row">
                         {room.description}
                     </th>
@@ -84,7 +84,7 @@ const getDetails = (location) =>
         </div>
     </div>;
 
-export const getServerSideProps = async (context) =>
+export const getStaticProps = async (context) =>
 {
     const { id } = context.params;
     return {
@@ -94,6 +94,14 @@ export const getServerSideProps = async (context) =>
             .first()
         }
     };
+}
+
+export async function getStaticPaths() {
+    return {
+      paths: [...Locations]
+        .select(l => '/locations/' + l.id),
+      fallback: false
+    }
 }
 
 export default Index

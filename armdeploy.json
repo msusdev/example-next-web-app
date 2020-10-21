@@ -21,7 +21,7 @@
                             },
                             "ports": [
                                 {
-                                    "port": 3000
+                                    "port": 80
                                 }
                             ]
                         }
@@ -33,7 +33,7 @@
                     "dnsNameLabel": "[concat('smoketestweb', uniqueString(resourceGroup().id))]",
                     "ports": [
                         {
-                            "port": 3000
+                            "port": 80
                         }
                     ]
                 }

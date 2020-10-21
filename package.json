@@ -6,7 +6,7 @@
   "scripts": {
     "dev": "next dev",
     "build": "next build && next export",
-    "start": "next start"
+    "start": "next start --port 80"
   },
   "dependencies": {
     "linqjs": "^1.0.2",

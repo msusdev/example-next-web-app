@@ -49,7 +49,7 @@ const getLocation = (location) =>
         </Link>
     </div>;  
 
-export const getServerSideProps = async (context) =>
+export const getStaticProps = async (context) =>
 {
     var items = [...Locations]
         .orderBy(l => l.lastRenovationDate)
